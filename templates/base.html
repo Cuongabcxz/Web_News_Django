@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/site-responsive.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+    <title>Newspaper | baomoi.com</title>
+</head>
+    <body id="app">
+
+        <!--Header-->
+        {% include 'includes/header.html' %}
+
+        {% block content %}
+        <!--content-->
+        {% endblock %}
+
+
+        <div style="clear: both;"></div>
+
+        <!--Footer-->
+        {% include 'includes/footer.html' %}
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

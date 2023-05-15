@@ -1,0 +1,87 @@
+{% load static %}
+<header>
+            <div class="top-header">
+                <a href="#"><img src="{% static 'Images/bm-logo.png' %}" width="100px" alt=""></a>
+
+                <form method="get" action="{% url 'search' %}" class="Search-content">
+                    <input type="text" placeholder="Nhập nôi dung tìm kiếm" name="q" value="{{ q }}">
+                    <button type="submit" id="search-icon"><i class="fa fa-search"></i></button>
+                </form>
+                <div class="icon">
+                    <a href="#"><i class="fa-thin fa-user"></i></a>
+                    <a href="#"><i class="fa-solid fa-bell"></i></a>
+                    {% if user.id is not None %}
+                        {% if user.is_superadmin %}
+                           <a href="http://127.0.0.1:8000/admin/">{{ user.full_name }}</a> | <a href="{% url 'logout' %}">Đăng xuất</a>
+                        {% elif user.is_admin %}
+                            <a href="{% url 'dashboard_users' user.id %}">{{ user.full_name }}</a> | <a href="{% url 'logout' %}">Đăng xuất</a>
+                        {% else %}
+                            <a href="#">{{ user.full_name }}</a> | <a href="{% url 'logout' %}">Đăng xuất</a>
+                        {% endif %}
+                    {% else %}
+                    <a href="{% url 'login' %}">Đăng nhập</a> | <a href="{% url 'register' %}">Đăng ký </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="nav-container">
+                <nav class="navbar">
+                    <ul class="ul-nav">
+                        <li class="btn-square btn-choose"><a class="" href="{% url 'home' %}">NÓNG</a></li>
+                        <li><a class="btn-square" href="{% url 'new' %}">MỚI</a></li>
+                        <li><a class="btn-square" href="{% url 'video' %}">VIDEO</a></li>
+                        <li><a class="btn-square" href="{% url 'topic' %}">CHỦ ĐỀ</a></li>
+
+                        {% for topic in topic_list %}
+                        <li><a class="btn-radius" href="{{ topic.get_url }}">{{ topic.name }}</a></li>
+                        {% endfor %}
+                        <li class="icon-dropdown" id="dropdown"><i class="fa fa-block-quote "></i></li>
+                    </ul>
+                </nav>
+                <div class="nav-supper dropsupport">
+                    <div class="nav-area">
+                        <div style="overflow: hidden;">
+                            <div class="nav-path display-none">
+                                <a href="#" class="header-path other-path ">
+                                    <i class="fa-light fa-location-dot"></i>
+                                    Tin quanh ta
+                                    <select name="location" id=""
+                                        style="float: right; border:none; background-color: #f3f3f3;">
+                                        <option value="">chọn địa phương</option>
+                                        <option value="">Hà Nội</option>
+                                        <option value="">TP. Hồ Chí Minh</option>
+                                        <option value="">Đà Nẵng</option>
+                                        <option value="">Hải Phòng</option>
+                                    </select></a>
+                                <a href="#" class="header-path display-none other-path">
+                                    BÓNG ĐÁ
+                                    <i style="display: inline-block; float: right;" class="fa-light fa-futbol"></i>
+                                </a>
+                                <a href="#" class="header-path display-none other-path">
+                                    TIỆN ÍCH
+                                    <i style="display: inline-block; float: right;" class="fa-light fa-cloud-bolt-sun"></i>
+                                </a>
+                                <a href="#" class="header-path display-none other-path">
+                                    AUDIO
+                                    <i style="display: inline-block; float: right;" class="fa-light fa-microphone"></i>
+                                </a>
+                            </div>
+
+                            {% for category in links %}
+                            <div class="nav-path">
+                                <a href="{{ category.get_url }}" class="header-path">{{ category.name }}</a>
+                                <ul class="ul-nav-path">
+                                    {% for type in category.type_set.all %}
+                                    <li><a href="{{ type.get_url }}" class="a-nav-path">{{ type.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endfor %}
+
+                            <div class="btn-close-drop" style="">ĐÓNG</div>
+                        </div>
+
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </header>

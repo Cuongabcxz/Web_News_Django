@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="bg-img-wd flow-root" style="background-image: url({{ topics.image.url }})">
+        <div class="content-layout">
+            <div class="header-cnt-l bg-cl-h-wd">
+                <a href="">{{ topics.name }} </a>
+                <a href="#"><i class="fa-thin fa-star"></i> </a>
+            </div>
+
+            <div class="content-pe d-flex"> <!--Col 1: Top 1 bài viết nổi bật -->
+                <div class="big-cnt-pe">
+                    <a href="./posts/kham-pha-10-khu-vuc-bo-hoang-ky-la-o-nga.html">
+                        <div class="img-hover-zoom"><img src="https://photo-baomoi.bmcdn.me/w700_r16x9/2022_07_31_83_43319483/d518830d594fb011e95e.jpg" alt=""></div>
+                    </a>
+                    <a href="./posts/kham-pha-10-khu-vuc-bo-hoang-ky-la-o-nga.html" class="text-hover">Khám phá 10 khu vực bị bỏ hoang kỳ lạ của nước Nga</a>
+                    <div class="post-footer">
+                        <a href="#"><img class="img-news " src="./Images/bao-vtc.png" alt=""></a>
+                        <span>15 giờ</span>
+                        <span>1 liên quan</span>
+                        <i class="fa-thin fa-clock"></i>
+                    </div>
+                    <p class="intro-cnt">
+                        Trong số này có một ngôi nhà ma ám, một nghĩa trang tàu thủy, một 'quái vật' cơ khí nửa tàu nửa máy bay.
+                    </p>
+                </div>
+
+                <section class="col-right"> <!--Col 2: Top 4 bài viết nổi bật -->
+                    <div class="small-cnt-pe">
+                        <div class="img-hover-zoom"><img src="https://photo-baomoi.bmcdn.me/w300_r3x2/2022_07_30_304_43310135/6e8a5ce986ab6ff536ba.jpg" alt=""></div>
+
+                        <div class="small-cnt-pe-right">
+                            <a href="" class="text-hover">4 danh thắng níu chân du khách khi đến Trung Quốc</a>
+                            <div class="post-footer mgt-3">
+                                <a href="#"><img class="img-news " src="./Images/bao-vietnam+.png" alt=""></a>
+                                <span>30/07/22</span>
+
+                                <i class="fa-thin fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-cnt-pe">
+                        <div class="img-hover-zoom"><img src="https://photo-baomoi.bmcdn.me/w300_r3x2/2022_07_30_304_43309756/13a1dfc60584ecdab595.jpg" alt=""></div>
+                        <div class="small-cnt-pe-right">
+                            <a href="" class="text-hover">Thổ Nhĩ Kỳ - Vùng đất dành cho những kẻ mộng mơ</a>
+                            <div class="post-footer mgt-3">
+                                <a href="#"><img class="img-news " src="./Images/bao-petrol-time.png" alt=""></a>
+                                <span>30/07/22</span>
+
+                                <i class="fa-thin fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-cnt-pe">
+                        <div class="img-hover-zoom"><img src="https://photo-baomoi.bmcdn.me/w300_r3x2_sm/2022_07_29_83_43308021/3a630ff7d5b53ceb65a4.jpg" alt=""></div>
+                        <div class="small-cnt-pe-right">
+                            <a href="" class="text-hover">'Kim tự tháp bí mật' ở Scotland ẩn giữa cánh rừng bạt ngàn</a>
+                            <div class="post-footer mgt-3">
+                                <a href="#"><img class="img-news " src="./Images/bao-vtc.png" alt=""></a>
+                                <span>29/07/22</span>
+                                <i class="fa-thin fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-cnt-pe">
+                        <div class="img-hover-zoom"><img src="https://photo-baomoi.bmcdn.me/w300_r3x2_sm/2022_07_29_65_43307020/e37b11f9cbbb22e57baa.jpg" alt=""></div>
+                        <div class="small-cnt-pe-right">
+                            <a href="" class="text-hover">Chiêm ngưỡng cây cầu biểu tượng của bờ Tây nước Mỹ</a>
+                            <div class="post-footer mgt-3">
+                                <a href="#"><img class="img-news " src="./Images/bao-vov.png" alt=""></a>
+                                <span>29/07/22</span>
+                                <span>3 liên quan</span>
+                                <i class="fa-thin fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- dãy các bài báo phân thành 3 cột -->
+                {% for news in news_list %}
+                <div class="bottom-other">
+                    <div class="bt-o-img img-hover-zoom">
+                        <a href="{{ news.get_url }}"><img src="{{ news.image.url }}" alt=""></a>
+                    </div>
+                    <div class="small-cnt-pe-right">
+                        <a href="{{ news.get_url }}" class="text-hover">{{ news.title }}</a>
+                        <div class="post-footer">
+                            <a href="#"><img class="img-news " src="/Images/bao-vietnamnet.png" alt=""></a>
+                            <span>{{ news.durationl }}</span>
+                            <i class="fa-thin fa-clock"></i>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

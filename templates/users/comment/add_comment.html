@@ -1,0 +1,47 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Thêm thể loại bài viết </strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form action="{% url 'category-create' %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                            {% csrf_token %}
+                                            {{ category_form.as_p }}
+                                            {% if messages %}
+                                               {% for message in messages %}
+                                                   {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                                               {% endfor %}
+                                            {% endif %}
+                                         <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

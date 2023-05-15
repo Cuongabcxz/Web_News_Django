@@ -1,0 +1,45 @@
+{% extends 'accounts/base_accounts.html' %}
+{% load static %}
+
+{% block content %}
+<form class="login-form" action="{% url 'register' %}" method="POST">
+    {% csrf_token %}
+    <label>
+        {{ form.first_name }}
+    </label>
+    <label>
+        {{ form.last_name }}
+    </label>
+    <label>
+        {{ form.email }}
+        <strong style="color: red">{{ form.email.errors|escape }}</strong>
+    </label>
+    <label>
+        {{ form.phone_number }}
+    </label>
+    <label>
+        {{ form.password }}
+    </label>
+    <label>
+        {{ form.confirm_password }}
+    </label>
+    <button type="submit">Đăng ký</button>
+    <!--Validate các field-->
+    {% if form.non_field_errors %}
+       {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong style="color: red">{{ error|escape }}</strong>
+        </div>
+       {% endfor %}
+    {% endif %}
+
+    <p class="message">Đã có tài khoản rồi <a href="{% url 'login' %}">Đăng nhập</a></p>
+
+    <!--Alert message-->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}

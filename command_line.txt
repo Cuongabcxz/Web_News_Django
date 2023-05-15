@@ -1,0 +1,18 @@
+# Lệnh makemigrations để tạo các file migration, File migration này nhằm xử lý sẽ tác động đến database
+# python manage.py makemigrations <name_app>
+
+# Lệnh migrate để áp dụng các thay đổi đó vào database.
+# python manage.py migrate
+
+# Lệnh add hoặc update file trong static từ app chính
+# B1: thay đổi trong folder static của project admin
+# B2: python manage.py collectstatic
+# B3: kiểm tra thay đổi
+
+# Lệnh tạo superuser
+# python manage.py createsuperuser
+
+# Tạo app
+# python manage.py startapp <app-name>
+
+

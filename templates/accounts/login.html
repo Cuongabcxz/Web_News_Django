@@ -1,0 +1,22 @@
+{% extends 'accounts/base_accounts.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'login' %}" class="login-form" method="POST">
+    {% csrf_token %}
+    <label>
+        <input type="email" placeholder="Địa chỉ email" name="email" value="{{ email }}"/>
+    </label>
+    <label>
+        <input type="password" placeholder="mật khẩu" name="password" value="{{ password }}"/>
+    </label>
+    <button type="submit">Đăng nhập</button>
+    <p class="message">Chưa có <a href="{% url 'register' %}">Đăng ký ngay</a></p>
+    <a href="{% url 'forgotPassword' %}" class="float-right">Forgot password?</a>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}

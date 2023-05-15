@@ -1,0 +1,46 @@
+{% load static %}
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="{% static 'Images/bm-logo.png' %}" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Thống kê</a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="fas fa-calendar-alt"></i>Tiến độ công việc</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Địa điểm làm việc</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'category' %}">
+                                <i class="fas fa-list-alt"></i>Thể loại bài viết</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'news' user.id %}">
+                                <i class="fas fa-newspaper-o"></i>Bài viết của bạn</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'comment' %}">
+                                <i class="fas fa-comment-alt"></i>Nhận xét & Đánh giá</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-users"></i>Tài khoản</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
